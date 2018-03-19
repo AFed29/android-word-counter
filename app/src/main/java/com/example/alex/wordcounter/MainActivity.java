@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText userInput;
     private Button   calculate;
     private TextView wordCountOutput;
+    private TextView individualWordCountOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         userInput = findViewById(R.id.input_text);
         calculate = findViewById(R.id.wordcount_button);
         wordCountOutput = findViewById(R.id.word_count);
+        individualWordCountOutput = findViewById(R.id.individual_wordcount_output);
     }
 
     public void onCalculateButtonClick(View clickView){
@@ -27,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
         String sentence = userInput.getText().toString();
         WordCount wordCount = new WordCount(sentence);
         wordCountOutput.setText("word count: " + wordCount.getWordCount());
-
-
+        individualWordCountOutput.setText(wordCount.getIndividualWordCount());
     }
 
 }
