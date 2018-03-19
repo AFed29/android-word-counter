@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Word Counter</string>
+    <string name="user_prompt">Please enter a sentence</string>
+    <string name="wordcount_button_text">Calculate</string>
+</resources>
