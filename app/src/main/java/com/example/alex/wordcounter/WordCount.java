@@ -2,6 +2,7 @@ package com.example.alex.wordcounter;
 
 import android.annotation.TargetApi;
 
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -39,19 +40,25 @@ public class WordCount {
         String[] words = getArrayOfWords();
         for (String word : words) {
             if (individualWordCounts.containsKey(word)) {
-                Integer value = individualWordCounts.get(word);
+                int value = individualWordCounts.get(word);
                 value ++;
                 individualWordCounts.put(word, value);
             } else {
                 individualWordCounts.put(word, 1);
             }
         }
+
+        int maxValue = Collections.max(individualWordCounts.values());
         StringBuilder result = new StringBuilder();
-        for (String word : individualWordCounts.keySet()) {
-            if (result.length() != 0) {
-                result.append(", ");
+        for (int i = maxValue; i > 0 ; i--) {
+            for (String word : individualWordCounts.keySet()) {
+                if (individualWordCounts.get(word) == i) {
+                    if (result.length() != 0) {
+                        result.append(", ");
+                    }
+                    result.append(word).append(" : ").append(individualWordCounts.get(word));
+                }
             }
-            result.append(word).append(" : ").append(individualWordCounts.get(word));
         }
         return result.toString();
     }
